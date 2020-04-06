@@ -6,6 +6,7 @@
                   <label for="#mobility" class="des-form-label">Mobility: </label>
                   <input 
                     id="mobility" 
+                    placeholder="Mobility"
                     name="mobility" 
                     class="form-control des-input-dark" 
                     max="120" 
@@ -17,6 +18,7 @@
                   <label for="#resilience" class="des-form-label">Resilience: </label>
                   <input 
                     id="resilience" 
+                    placeholder="Resilience"
                     name="resilience" 
                     class="form-control des-input-dark" 
                     type="number"
@@ -29,6 +31,7 @@
                   <label for="#recovery" class="des-form-label">Recovery: </label>
                   <input 
                     id="recovery" 
+                    placeholder="Recovery"
                     name="recovery" 
                     class="form-control des-input-dark" 
                     type="number"
@@ -38,7 +41,8 @@
               <div class="col">
                   <label for="#discipline" class="des-form-label">Discipline: </label>
                   <input 
-                    id="discipline" 
+                    id="discipline"
+                    placeholder="Discipline" 
                     name="discipline" 
                     class="form-control des-input-dark" 
                     type="number"
@@ -50,7 +54,8 @@
               <div class="col">
                   <label for="#intellect" class="des-form-label">Intellect: </label>
                   <input 
-                    id="intellect" 
+                    id="intellect"
+                    placeholder="Intellect" 
                     name="intellect" 
                     class="form-control des-input-dark" 
                     type="number"
@@ -60,7 +65,8 @@
               <div class="col">
                   <label for="#strength" class="des-form-label">Strength: </label>
                   <input 
-                    id="strength" 
+                    id="strength"
+                    placeholder="Strength" 
                     name="strength" 
                     class="form-control des-input-dark" 
                     type="number"
@@ -87,7 +93,7 @@ export default {
   data (){
       return {
         stats: {
-            mobility: 24,
+            mobility: '',
             resilience: '',
             recovery: '',
             discipline: '',
@@ -118,6 +124,10 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+
+  label{
+    margin-top: 20px;
+  }
 
 .row{
   margin: 0 auto;
