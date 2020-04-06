@@ -16,7 +16,7 @@ export default new Router({
         },        
         {
         path: '/armorScore',
-        name: 'ArmorScorePage',
+        name: 'Armor Calculator',
         component: ArmorScorePage
     },
 ]

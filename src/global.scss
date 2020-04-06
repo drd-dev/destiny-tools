@@ -31,36 +31,13 @@ hr{
     width: 100%;
   }
 
-.page-title{
-    position: fixed;
-    width: 100%;
-    padding: 5px;
-    padding-left: 20px;
-    text-align: left;
-    background-color: $des-color-background-darkest;
-}
+//the content of a page+
 .page-content{
-    padding-top: 60px;
-    width: 60%;
+    padding: 10px;
+    padding-top: 50px;
+    width: 100%;
     margin: 0 auto;
   }
-
-//nav bar
-.des-nav{
-    position: fixed;
-    top:0;
-    left: 0;
-    width: 100%;
-    padding: 10px;
-    color: $des-color-text;
-    text-align: left;
-    font-family: 'Futurist';
-    background-color: $des-color-background-med;
-
-    .app-name{
-        font-size: 20px;
-    }
-}
 
 //buttons
 .des-btn-green{

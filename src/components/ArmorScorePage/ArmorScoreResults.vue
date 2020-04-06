@@ -1,7 +1,7 @@
 <template>
   <div class="item-card">
     <div class="card-header">
-        <div class="card-header-title">Your Score</div>
+        <div class="card-header-title">Score</div>
         <div class="card-header-subtitle">Armor Score</div>
     </div>
     <div class="card-body">
@@ -9,10 +9,10 @@
           <div class="armor-score-text">Armor Score</div>
         </div>
         <div class="equipped-points">Equipped Points: {{equippedPoints}}
-          <div class="text-quiet">(Your Total Skill Points from Equipped Armor)</div>
+          <div class="text-quiet">(Points currently equipped from gear)</div>
         </div>
         <div class="utilized-points">Utilized Points: {{utilizedPoints}}
-          <div class="text-quiet">(The Total Skill Points Being Applied)</div>
+          <div class="text-quiet">(Points being applied to your guardian's skills)</div>
         </div>
         <div class="utilized-points">Efficiency: {{efficiencyComputed}}%
           <div class="text-quiet">(Utilized / Equipped)</div>
@@ -57,6 +57,7 @@ export default {
       this.equippedPoints = this.sumObject(this.stats);
       this.utilizedPoints = this.roundAllStats(this.stats);
       this.efficiency = (this.utilizedPoints / this.equippedPoints) * 100;
+      this.wastedPoints = (this.equippedPoints - this. utilizedPoints);
       this.armorScore = (this.utilizedPoints - this.wastedPoints);
     },
     sumObject(object) {
@@ -95,7 +96,7 @@ export default {
 
         .card-header-title{
             font-weight: 500;
-            font-size: 25px;
+            font-size: 250%;
         }
 
         .card-header-subtitle{
@@ -114,11 +115,12 @@ export default {
     }
 
     .armor-score{
-      font-size: 70px;
+      vertical-align: text-top;
+      font-size: 400%;
 
       .armor-score-text{
         display: inline;
-        font-size: 20px;
+        font-size: 40%;
         font-weight: 300;
         padding-top: 10px;
         vertical-align: text-top;
@@ -128,7 +130,7 @@ export default {
     .text-quiet{
       padding-left: 5px;
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.404);
+      color: $des-color-text-dark;
     }
 }
 </style>

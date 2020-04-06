@@ -11,6 +11,7 @@
                     max="120" 
                     type="number"
                     v-model.number="stats.mobility">
+                    <StatBar statName="Mobility" :progress="stats.mobility"/>
               </div>
               <div class="col">
                   <label for="#resilience" class="des-form-label">Resilience: </label>
@@ -20,6 +21,7 @@
                     class="form-control des-input-dark" 
                     type="number"
                     v-model.number="stats.resilience">
+                    <StatBar statName="Resilience" :progress="stats.resilience"/>
               </div>
           </div>
           <div class="row">
@@ -31,6 +33,7 @@
                     class="form-control des-input-dark" 
                     type="number"
                     v-model.number="stats.recovery">
+                    <StatBar statName="Recovery" :progress="stats.recovery"/>
               </div>
               <div class="col">
                   <label for="#discipline" class="des-form-label">Discipline: </label>
@@ -40,6 +43,7 @@
                     class="form-control des-input-dark" 
                     type="number"
                     v-model.number="stats.discipline">
+                    <StatBar statName="Discipline" :progress="stats.discipline"/>
               </div>
           </div>
           <div class="row">
@@ -51,6 +55,7 @@
                     class="form-control des-input-dark" 
                     type="number"
                     v-model.number="stats.intellect">
+                    <StatBar statName="Intellect" :progress="stats.intellect"/>
               </div>
               <div class="col">
                   <label for="#strength" class="des-form-label">Strength: </label>
@@ -60,6 +65,7 @@
                     class="form-control des-input-dark" 
                     type="number"
                     v-model.number="stats.strength">
+                    <StatBar statName="Strength" :progress="stats.strength"/>
               </div>
           </div>
           <div class="row" id="button-row">
@@ -71,17 +77,22 @@
 </template>
 
 <script>
+import StatBar from '../shared/StatBar'
+
 export default {
   name: 'ArmorScoreForm',
+  components: {
+    StatBar
+  },
   data (){
       return {
         stats: {
-            mobility: 0,
-            resilience: 0,
-            recovery: 0,
-            discipline: 0,
-            intellect: 0,
-            strength: 0
+            mobility: 24,
+            resilience: '',
+            recovery: '',
+            discipline: '',
+            intellect: '',
+            strength: ''
         }
       }
   },

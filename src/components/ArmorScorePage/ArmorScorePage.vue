@@ -1,12 +1,7 @@
 <template>
   <div class="armor-score-page">
-    <div class="page-title">Armor Score Calculator</div>
     <div class="page-content">
-      <div class="page-info">
-        <h2 class="page-info-title">Calculate Your Relative Skill Score</h2>
-        <p class="page-info-body">Enter your current skills to get an armor rating</p>
-        <hr>
-      </div>
+      <PageInfo title="Armor Score Calculator" body="Enter your skills to get an armor number"/>
       <ArmorScoreForm 
         class="armor-score-form"
         @calculateClicked="calculateClicked"/>
@@ -19,12 +14,14 @@
 <script>
 import ArmorScoreForm from './ArmorScoreForm'
 import ArmorScoreResults from './ArmorScoreResults'
+import PageInfo from '../shared/pageInfo'
 
 export default {
   name: 'ArmorScorePage',
   components: {
     ArmorScoreForm,
-    ArmorScoreResults
+    ArmorScoreResults,
+    PageInfo
   },
   data(){
     return{
