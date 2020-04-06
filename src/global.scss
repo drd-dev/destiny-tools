@@ -1,0 +1,124 @@
+@import './theme/colors.scss';
+@import './theme/fonts.scss';
+
+// global styling
+html, #app{
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: left;
+    background-color: $des-color-background-dark;
+    color: $des-color-text;
+
+    #app{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+}
+
+a{
+    text-decoration: none;
+    color: $des-color-gold-border;
+
+    &:hover{
+        text-decoration: none;
+        color: $des-color-gold;
+    }
+}
+
+hr{
+    background-color: rgba(255, 255, 255, 0.233);
+    width: 100%;
+  }
+
+.page-title{
+    position: fixed;
+    width: 100%;
+    padding: 5px;
+    padding-left: 20px;
+    text-align: left;
+    background-color: $des-color-background-darkest;
+}
+.page-content{
+    padding-top: 60px;
+    width: 60%;
+    margin: 0 auto;
+  }
+
+//nav bar
+.des-nav{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    color: $des-color-text;
+    text-align: left;
+    font-family: 'Futurist';
+    background-color: $des-color-background-med;
+
+    .app-name{
+        font-size: 20px;
+    }
+}
+
+//buttons
+.des-btn-green{
+    font-size: 18px;
+    font-family: "Futurist";
+    color: $light;
+    border: 2px solid $des-color-green-border;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: $des-color-green;
+
+    &:hover{
+        background-color: lighten($des-color-green,5);
+        border: 2px solid white;
+    }
+
+    &:disabled{
+        background-color: lighten($dark-light, 10);
+        border-color: lighten($dark-light,20);
+        color: $dark-light;
+    }
+}
+
+.des-btn-disabled{
+
+}
+
+.des-btn-red{
+
+}
+
+//forms
+.des-form-label{
+    color: $des-color-text-dark;
+    text-align: left;
+}
+
+.des-input-dark{
+    border: none;
+    background-color: $des-color-background-med;
+    color: $des-color-text;
+
+    &:focus{
+        background-color: $des-color-background-light;
+        color:$des-color-text;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    
+    /* Firefox */
+    &[type=number] {
+      -moz-appearance: textfield;
+    }
+}
