@@ -88,6 +88,7 @@ export default {
 <style lang="scss" scoped>
 @import '../../theme/colors.scss';
 .item-card{
+    overflow: hidden;
     max-width: 350px;
     min-width: 270px;
 

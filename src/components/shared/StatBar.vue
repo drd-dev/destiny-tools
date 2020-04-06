@@ -23,10 +23,10 @@
 <script>
 export default {
   name: 'StatBar',
-  props: {
-      statName: String,
-      progress: Number
-  },
+  props: [
+      'statName',
+      'progress'
+  ],
   computed:{
       getWidth(){
           if(this.progress > 0){

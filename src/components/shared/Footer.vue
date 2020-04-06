@@ -31,6 +31,7 @@ export default {
 @import '../../theme/colors.scss';
 
 .footer{
+  z-index: 1000;
   font-size: 80%;
   width: 100%;
   padding: 2px;

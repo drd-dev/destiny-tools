@@ -2,7 +2,7 @@
   <div class="armor-score-form">
       <form>
           <div class="row">
-              <div class="col">
+              <div class="col-sm">
                   <label for="#mobility" class="des-form-label">Mobility: </label>
                   <input 
                     id="mobility" 
@@ -14,7 +14,7 @@
                     v-model.number="stats.mobility">
                     <StatBar statName="Mobility" :progress="stats.mobility"/>
               </div>
-              <div class="col">
+              <div class="col-sm">
                   <label for="#resilience" class="des-form-label">Resilience: </label>
                   <input 
                     id="resilience" 
@@ -27,7 +27,7 @@
               </div>
           </div>
           <div class="row">
-              <div class="col">
+              <div class="col-sm">
                   <label for="#recovery" class="des-form-label">Recovery: </label>
                   <input 
                     id="recovery" 
@@ -38,7 +38,7 @@
                     v-model.number="stats.recovery">
                     <StatBar statName="Recovery" :progress="stats.recovery"/>
               </div>
-              <div class="col">
+              <div class="col-sm">
                   <label for="#discipline" class="des-form-label">Discipline: </label>
                   <input 
                     id="discipline"
@@ -51,7 +51,7 @@
               </div>
           </div>
           <div class="row">
-              <div class="col">
+              <div class="col-sm">
                   <label for="#intellect" class="des-form-label">Intellect: </label>
                   <input 
                     id="intellect"
@@ -62,7 +62,7 @@
                     v-model.number="stats.intellect">
                     <StatBar statName="Intellect" :progress="stats.intellect"/>
               </div>
-              <div class="col">
+              <div class="col-sm">
                   <label for="#strength" class="des-form-label">Strength: </label>
                   <input 
                     id="strength"
@@ -93,12 +93,12 @@ export default {
   data (){
       return {
         stats: {
-            mobility: '',
-            resilience: '',
-            recovery: '',
-            discipline: '',
-            intellect: '',
-            strength: ''
+            mobility: 0,
+            resilience: 0,
+            recovery: 0,
+            discipline: 0,
+            intellect: 0,
+            strength: 0
         }
       }
   },
