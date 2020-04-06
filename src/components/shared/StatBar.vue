@@ -43,6 +43,7 @@ export default {
 @import '../../theme/colors.scss';
     .stat-bar{
         padding-top: 10px;
+        max-width: 570px;
     }
     .progress{
         width: 100%;

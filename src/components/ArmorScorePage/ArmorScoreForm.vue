@@ -93,12 +93,12 @@ export default {
   data (){
       return {
         stats: {
-            mobility: 0,
-            resilience: 0,
-            recovery: 0,
-            discipline: 0,
-            intellect: 0,
-            strength: 0
+            mobility: '',
+            resilience: '',
+            recovery: '',
+            discipline: '',
+            intellect: '',
+            strength: ''
         }
       }
   },
