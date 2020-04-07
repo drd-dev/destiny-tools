@@ -15,7 +15,7 @@
 
 <script>
 import PageInfo from '../shared/pageInfo';
-// import Config from '../../config.json';
+import Config from '../../config.json';
 
   // config({
   //   method: 'get',
@@ -37,11 +37,13 @@ export default {
     PageInfo
   },
   created(){
-    const baseURI = 'https://www.bungie.net/Platform/Destiny2/SearchDestinyPlayer/-1/dattowatto/'
+    const baseURI = 'https://www.bungie.net/Platform/Trending/Categories/'
+    // const path = '/App/FirstParty/';
     this.$http.get(baseURI, {
       headers: {
-        'X-API-Key': '83e9e0a68d624819a250c9c6ab8bb5a3',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'https://www.bungie.net',
+        'X-API-Key': Config.destinyApi.apiKey,
+
       }
     })
     .then((result) => {
