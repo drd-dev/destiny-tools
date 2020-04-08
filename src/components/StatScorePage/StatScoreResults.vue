@@ -1,18 +1,18 @@
 <template>
   <div class="item-card">
     <div class="card-header">
-        <div class="card-header-title">Score</div>
-        <div class="card-header-subtitle">Armor Score</div>
+        <div class="card-header-title">Stat Score</div>
+        <div class="card-header-subtitle">Calculation</div>
     </div>
     <div class="card-body">
-        <div class="armor-score">{{armorScore}}
-          <div class="armor-score-text">Armor Score</div>
+        <div class="armor-score">{{statScore}}
+          <div class="armor-score-text">Stat Score</div>
         </div>
         <div class="equipped-points">Equipped Points: {{equippedPoints}}
           <div class="text-quiet">(Points currently equipped from gear)</div>
         </div>
         <div class="utilized-points">Utilized Points: {{utilizedPoints}}
-          <div class="text-quiet">(Points being applied to your guardian's skills)</div>
+          <div class="text-quiet">(Points being applied to your Guardian's stats)</div>
         </div>
         <div class="utilized-points">Efficiency: {{efficiencyComputed}}%
           <div class="text-quiet">(Utilized / Equipped)</div>
@@ -21,7 +21,7 @@
     </div> 
     <div class="card-footer">
       <hr>
-      Armor Algorithm by <a href="https://www.youtube.com/channel/UCC4sS1HupTBiJ_JuWA5jucg" target="_blank">OOOG</a>
+      Stat Score Algorithm by <a href="https://www.youtube.com/channel/UCC4sS1HupTBiJ_JuWA5jucg" target="_blank">OOOG</a>
     </div> 
   </div>
 </template>
@@ -30,7 +30,7 @@
 
 
 export default {
-  name: 'ArmorScoreResults',
+  name: 'StatScoreResults',
   props: {
       stats: Object
   },  
@@ -40,7 +40,7 @@ export default {
         utilizedPoints: 0,
         wastedPoints: 0,
         efficiency: 0,
-        armorScore: 0
+        statScore: 0
 
     }
   },
@@ -58,7 +58,7 @@ export default {
       this.utilizedPoints = this.roundAllStats(this.stats);
       this.efficiency = (this.utilizedPoints / this.equippedPoints) * 100;
       this.wastedPoints = (this.equippedPoints - this. utilizedPoints);
-      this.armorScore = (this.utilizedPoints - this.wastedPoints);
+      this.statScore = (this.utilizedPoints - this.wastedPoints);
     },
     sumObject(object) {
         return Object.values(object).reduce((a, b) => a + b);

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import ArmorScorePage from '../components/ArmorScorePage/ArmorScorePage';
+import StatScorePage from '../components/StatScorePage/StatScorePage';
 import HomePage from '../components/HomePage/HomePage'
 
 Vue.use(Router);
@@ -15,9 +15,9 @@ export default new Router({
             component: HomePage
         },        
         {
-        path: '/armorScore',
-        name: 'Armor Calculator',
-        component: ArmorScorePage
+        path: '/statscore',
+        name: 'Stat Score',
+        component: StatScorePage
     },
 ]
 });

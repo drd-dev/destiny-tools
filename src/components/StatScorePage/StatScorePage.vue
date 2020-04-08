@@ -1,7 +1,8 @@
 <template>
   <div class="armor-score-page">
     <div class="page-content">
-      <PageInfo title="Armor Score Calculator" body="Enter your skills to get an armor number"/>
+      <PageInfo title="Stat Score Calculator" 
+        body="Enter your armor stats to get back a score"/>
       
       <div class="player-search">
         <label for="">Enter Username</label>
@@ -21,30 +22,30 @@
      
       </div>
       
-      <ArmorScoreForm 
+      <StatScoreForm 
         class="armor-score-form"
         @calculateClicked="calculateClicked"
         :stats="stats"
         />
-      <ArmorScoreResults class="results" ref="results" :stats="stats" v-if="calculatePressed" />
+      <StatScoreResults class="results" ref="results" :stats="stats" v-if="calculatePressed" />
     </div>
     
   </div>
 </template>
 
 <script>
-import ArmorScoreForm from './ArmorScoreForm'
-import ArmorScoreResults from './ArmorScoreResults'
+import StatScoreForm from './StatScoreForm'
+import StatScoreResults from './StatScoreResults'
 import PageInfo from '../shared/pageInfo'
 import CharacterCard from '../shared/CharacterCard'
 
 import * as BungieAPI from '../../utils/BungieApiUtils';
 
 export default {
-  name: 'ArmorScorePage',
+  name: 'StatScorePage',
   components: {
-    ArmorScoreForm,
-    ArmorScoreResults,
+    StatScoreForm,
+    StatScoreResults,
     PageInfo,
     CharacterCard
   },

@@ -86,7 +86,7 @@
 import StatBar from '../shared/StatBar'
 
 export default {
-  name: 'ArmorScoreForm',
+  name: 'StatScoreForm',
   components: {
     StatBar
   },

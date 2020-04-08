@@ -3,7 +3,7 @@
    <div class="des-nav">
       <router-link id="home-link" to="/" class="app-name">{{appName}}</router-link>
   </div> 
-  <div class="page-title">// {{$route.name}}</div>
+  <div class="page-title"><span>// </span>{{$route.name}}</div>
 </div>
 
 </template>
@@ -22,6 +22,11 @@ export default {
 
 <style lang='scss' scoped>
 @import '../../theme/colors.scss';
+
+
+span{
+  color: $des-color-gold-border;
+}
 
 .nav-container{
   position: fixed;
