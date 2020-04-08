@@ -9,18 +9,23 @@
         <button type="button" class="des-btn-green" v-on:click="getCharacterIDs()">Get User</button>
         <h3 v-if="user.charactersIDs.length > 0">Select a Character</h3>
         <div class="row my-auto"> 
-          <CharacterCard 
+          <h2 v-if="noUser" style="text-align: center;">No User Found</h2>
+          <CharacterCard
+            ref ='charCard'
             v-for="characterID in user.charactersIDs" 
             :key="characterID" 
             :memberID="user.membershipID"
-            :characterID="characterID"/>
+            :characterID="characterID"
+            @statsFromUser="updateStats"/>
         </div>
      
       </div>
       
       <ArmorScoreForm 
         class="armor-score-form"
-        @calculateClicked="calculateClicked"/>
+        @calculateClicked="calculateClicked"
+        :stats="stats"
+        />
       <ArmorScoreResults class="results" ref="results" :stats="stats" v-if="calculatePressed" />
     </div>
     
@@ -46,8 +51,15 @@ export default {
   data(){
     return{
       calculatePressed: false,
-      stats: {},
-      userNameSearch: 'zeoxo',
+        stats: {
+          mobility: '',
+          resilience: '',
+          recovery: '',
+          discipline: '',
+          intellect: '',
+          strength: ''
+      },
+      userNameSearch: '',
       noUser: false,
       user:{
         displayName:'',
@@ -64,6 +76,19 @@ export default {
     },
     getCharacterIDs(){
       this.noUser = false;
+      this.user ={
+        displayName:'',
+        membershipID: '',
+        charactersIDs: [],
+      }
+      this.stats = {
+          mobility: '',
+          resilience: '',
+          recovery: '',
+          discipline: '',
+          intellect: '',
+          strength: ''
+      },
       BungieAPI.getMembershipID(this.userNameSearch).then((result) => {
         //store the membershipID and display name
         this.user.membershipID = result.data.Response[0].membershipId;
@@ -76,14 +101,19 @@ export default {
       }).catch((error) => {
         console.log(error);
         this.noUser = true;
-        this.user ={
-          displayName:'',
-          membershipID: '',
-          charactersIDs: [],
-        }
       })
+    },
+    updateStats(stats){
+      const values = Object.values(stats);
+      this.stats.mobility = values[5];
+      this.stats.resilience = values[1];
+      this.stats.recovery = values[4];
+      this.stats.discipline = values[2];
+      this.stats.intellect = values[0];
+      this.stats.strength = values[6];
     }
   }
+
 
 }
 </script>

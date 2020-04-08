@@ -1,26 +1,25 @@
 <template>
-  <div class="character-card col-sm">
-      <div class="card-content row">
-        <div class="content-top">
-            <div class="class-nam">
-                {{getClassName}}
-            </div>
-            <div class="light">
-                {{characterData.light}}
-            </div>
+<a class="character-card col-sm" v-on:click="emitStats" v-bind:class="{loading: !isLoaded, selected: selected}">
+    <div class="card-content row">
+    <div class="content-top">
+        <div class="class-nam">
+            {{getClassName}}
         </div>
-        <div class="content-bottom">
-            <div class="race">
-                Exo Male
-            </div>
-            <div class="level">
-                Level {{level}}
-            </div>
+        <div class="light">
+            {{characterData.light}}
         </div>
+    </div>
+    <div class="content-bottom">
+        <div class="race">
+            <!-- Exo Male -->
+        </div>
+        <div class="level">
+            Level {{level}}
+        </div>
+    </div>
 
-      </div>
-
-  </div>
+    </div>
+</a>
 </template>
 
 <script>
@@ -36,7 +35,10 @@ export default {
       return{
           characterData: '',
           className: '',
-          level: ''
+          level: '',
+          stats: {},
+          isLoaded: false,
+          selected: false
       }
   },
   mounted(){
@@ -48,8 +50,10 @@ export default {
                 return 'Titan';
             }else if(this.characterData.classType === 1){
                 return 'Hunter';
-            }else{
+            }else if(this.characterData.classType === 2){
                 return 'Warlock';
+            }else{
+                return 'Loading...'
             }
       }
   },
@@ -59,7 +63,15 @@ export default {
           let char = result.data.Response.character.data
           this.characterData = char;
           this.level = char.levelProgression.level;
+          this.stats = char.stats;
+          this.isLoaded = true;
       })
+    },
+    emitStats(){
+        if(this.isLoaded){
+            this.selected = true;
+            this.$emit('statsFromUser', this.stats);
+        }
     }
   }
 }
@@ -71,12 +83,18 @@ export default {
 @import '../../theme/colors.scss';
 
 .character-card{
-    background-color: $des-color-background-light;
+    border: 2px solid transparent;
+    background-color: $des-color-background-med;
     height: 80px;
     width: 360px;
     margin-left: 10px;
     margin-right: 10px;
     font-size: 30px;
+    cursor: pointer;
+
+    &:hover{
+        background-color: $des-color-background-light;;
+    }
 
     .card-content{
         padding-left: 10px;
@@ -105,5 +123,13 @@ export default {
 
 
 }
+
+.loading{
+    background-color: rgba(255, 255, 255, 0.315);
+}
+
+// .selected{
+//     border: 2px solid white;
+// }
 
 </style>

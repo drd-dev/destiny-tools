@@ -90,17 +90,15 @@ export default {
   components: {
     StatBar
   },
-  data (){
-      return {
-        stats: {
-            mobility: '',
-            resilience: '',
-            recovery: '',
-            discipline: '',
-            intellect: '',
-            strength: ''
-        }
-      }
+  props:{
+    stats: {
+        mobility: Number,
+        resilience: Number,
+        recovery: Number,
+        discipline: Number,
+        intellect: Number,
+        strength: Number
+    }
   },
   computed:{
       isCalculateReady(){
