@@ -83,6 +83,7 @@ export default {
 @import '../../theme/colors.scss';
 
 .character-card{
+    margin: 5px;
     border: 2px solid transparent;
     background-color: $des-color-background-med;
     height: 80px;

@@ -1,33 +1,33 @@
 <template>
-  <div class="armor-score-page">
-    <div class="page-content">
-      <PageInfo title="Stat Score Calculator" 
-        body="Enter your armor stats to get back a score"/>
-      
-      <div class="player-search">
-        <label for="">Enter Username</label>
-        <input type="text" class="form-control des-input-dark"  v-model="userNameSearch">
-        <button type="button" class="des-btn-green" v-on:click="getCharacterIDs()">Get User</button>
-        <h3 v-if="user.charactersIDs.length > 0">Select a Character</h3>
-        <div class="row my-auto"> 
-          <h2 v-if="noUser" style="text-align: center;">No User Found</h2>
-          <CharacterCard
-            ref ='charCard'
-            v-for="characterID in user.charactersIDs" 
-            :key="characterID" 
-            :memberID="user.membershipID"
-            :characterID="characterID"
-            @statsFromUser="updateStats"/>
-        </div>
-     
+  <div class="page-content">
+    <PageInfo title="Stat Score Calculator" 
+      body="Enter your armor stats to get back a score"/>
+    
+    <div class="player-search">
+      <label for="">Enter Username</label>
+      <input type="text" class="form-control des-input-dark"  v-model="userNameSearch">
+      <button type="button" class="des-btn-green" v-on:click="getCharacterIDs()">Get User</button>
+      <h3 v-if="user.charactersIDs.length > 0">Select a Character</h3>
+      <div class="character-cards row"> 
+        <h2 v-if="noUser" style="text-align: center;">No User Found</h2>
+        <CharacterCard
+          ref ='charCard'
+          v-for="characterID in user.charactersIDs" 
+          :key="characterID" 
+          :memberID="user.membershipID"
+          :characterID="characterID"
+          @statsFromUser="updateStats"/>
       </div>
-      
+    
+    </div>
+    <div class="score-calculator row">
+
       <StatScoreForm 
-        class="armor-score-form"
+        class="form col-sm"
         @calculateClicked="calculateClicked"
         :stats="stats"
         />
-      <StatScoreResults class="results" ref="results" :stats="stats" v-if="calculatePressed" />
+      <StatScoreResults class="col-sm" ref="results" :stats="stats" />      
     </div>
     
   </div>
@@ -124,13 +124,22 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-.results{
-  padding-top: 30px;
-  margin: 0 auto;
-}
-
 .player-search{
   margin: 0 auto;
   width: 60%;
+  margin-bottom: 30px;
 }
+
+.score-calculator{
+  margin: 0 auto;
+  width: 60%;
+  
+}
+@media only screen and (max-width: 600px) {
+  .score-calculator {
+      width: 100%;
+  }
+}
+
+
 </style>

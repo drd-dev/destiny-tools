@@ -127,11 +127,6 @@ export default {
     margin-top: 20px;
   }
 
-.row{
-  margin: 0 auto;
-  max-width: 600px;
-}
-
 #button-row{
   margin: 0 auto;
   margin-top: 40px;

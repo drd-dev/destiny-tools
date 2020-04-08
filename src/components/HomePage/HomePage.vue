@@ -7,6 +7,12 @@
           <router-link to="StatScore">Stat Score Calculator</router-link>
         </li>
       </ul>
+      <ItemCard 
+        title="test Title"
+        subtitle="test sub"
+        :mainStat="mainStat"
+        :body="cardBody"
+        />
     </div>
 
   </div>
@@ -14,16 +20,24 @@
 
 <script>
 import PageInfo from '../shared/pageInfo';
+import ItemCard from '../shared/ItemCard'
 export default {
 
 
 
   name: 'HomePage',
-  props: {
-    msg: String
+  data(){
+    return{
+      mainStat: {label: "Armor Score", value: 160},
+      cardBody: [
+        {label: "label1:", value:200},
+        {label: "label2:", value:300}
+      ]
+    }
   },
   components: {
-    PageInfo
+    PageInfo,
+    ItemCard
   }
 }
 </script>
