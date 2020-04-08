@@ -2,6 +2,22 @@
   <div class="armor-score-page">
     <div class="page-content">
       <PageInfo title="Armor Score Calculator" body="Enter your skills to get an armor number"/>
+      
+      <div class="player-search">
+        <label for="">Enter Username</label>
+        <input type="text" class="form-control des-input-dark"  v-model="userNameSearch">
+        <button type="button" class="des-btn-green" v-on:click="getCharacterIDs()">Get User</button>
+        <h3 v-if="user.charactersIDs.length > 0">Select a Character</h3>
+        <div class="row my-auto"> 
+          <CharacterCard 
+            v-for="characterID in user.charactersIDs" 
+            :key="characterID" 
+            :memberID="user.membershipID"
+            :characterID="characterID"/>
+        </div>
+     
+      </div>
+      
       <ArmorScoreForm 
         class="armor-score-form"
         @calculateClicked="calculateClicked"/>
@@ -15,18 +31,29 @@
 import ArmorScoreForm from './ArmorScoreForm'
 import ArmorScoreResults from './ArmorScoreResults'
 import PageInfo from '../shared/pageInfo'
+import CharacterCard from '../shared/CharacterCard'
+
+import * as BungieAPI from '../../utils/BungieApiUtils';
 
 export default {
   name: 'ArmorScorePage',
   components: {
     ArmorScoreForm,
     ArmorScoreResults,
-    PageInfo
+    PageInfo,
+    CharacterCard
   },
   data(){
     return{
       calculatePressed: false,
-      stats: {}
+      stats: {},
+      userNameSearch: 'zeoxo',
+      noUser: false,
+      user:{
+        displayName:'',
+        membershipID: '',
+        charactersIDs: [],
+      }
     }
   },
   methods: {
@@ -34,8 +61,30 @@ export default {
       if(this.calculatePressed === true){this.$refs.results.calculateArmorScore()}
       this.calculatePressed = true;
       this.stats = data;
+    },
+    getCharacterIDs(){
+      this.noUser = false;
+      BungieAPI.getMembershipID(this.userNameSearch).then((result) => {
+        //store the membershipID and display name
+        this.user.membershipID = result.data.Response[0].membershipId;
+        this.user.displayName = result.data.Response[0].displayName;
+
+        //get the user's character's IDs
+        BungieAPI.getProfile(this.user.membershipID, 'TigerSteam').then((result) =>{
+          this.user.charactersIDs = Object.keys(result.data.Response.characters.data);
+        })
+      }).catch((error) => {
+        console.log(error);
+        this.noUser = true;
+        this.user ={
+          displayName:'',
+          membershipID: '',
+          charactersIDs: [],
+        }
+      })
     }
   }
+
 }
 </script>
 
@@ -47,5 +96,10 @@ export default {
 .results{
   padding-top: 30px;
   margin: 0 auto;
+}
+
+.player-search{
+  margin: 0 auto;
+  width: 60%;
 }
 </style>

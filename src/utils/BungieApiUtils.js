@@ -31,6 +31,8 @@ export async function getProfile(membershipID, profileType){
 
 }
 
-export async function getCharacter(){
-  
+export async function getCharacter(memberID, characterID){
+  const path = data.baseURI + '/Destiny2/3/Profile/'+ memberID +'/Character/' +characterID +'/?components=200'
+  const response = getData(path);
+  return response;
 }
