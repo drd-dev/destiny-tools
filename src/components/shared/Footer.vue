@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
       <div class="footer-content">
-        <div class="left">App Developed by <a href="https://zeoxo.com" target="_blank">zeoxo</a> {{date}} &copy;</div>
+        <div class="left"> v{{version}} | &copy; <a href="https://zeoxo.com" target="_blank">zeoxo</a> {{date}} | <a href="https://github.com/zeoxo/destiny-tools" target="_blank">Source</a> |<a href="https://ko-fi.com/zeoxo_" target="_blank"> Donate</a></div>
         <div class="right">Destiny is a registered trademark of <a href="https://www.bungie.net/" target="_blank">Bungie</a>. Some content and images are the property of Bungie.</div>
       </div>
 
@@ -15,10 +15,9 @@ export default {
   props: {
   },
   computed: {
-      appName(){
-          console.log(Config.appName)
-          return Config.appName;
-      },
+    version(){
+      return Config.version;
+    },
       date(){
         let d = new Date();
         return d.getFullYear();

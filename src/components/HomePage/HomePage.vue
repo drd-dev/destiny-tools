@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <div class="page-content">
-      <PageInfo title="Welcome To Destiny Tools" body="Below is a range of various tools to assist players in Destiny 2"/>
+      <PageInfo title="Welcome To Destiny Tools" body="Below is a range of various tools to assist players in Destiny 2 (Right now there is only one)"/>
       <ul>
         <li>
           <router-link to="ArmorScore">Armor Score Calculator</router-link>
