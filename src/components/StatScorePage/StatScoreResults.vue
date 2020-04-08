@@ -30,9 +30,6 @@ export default {
         statScore: 0,
     }
   },
-  mounted(){
-    this.calculateArmorScore();
-  },
   computed: {
     efficiencyComputed(){
       return Math.round(this.efficiency * 100) / 100;
@@ -44,8 +41,8 @@ export default {
       return [
         {label: 'Equipped Points: ', value: this.equippedPoints, hint: '(Points from your equipped armor)'},
         {label: 'Utilized Points: ', value: this.utilizedPoints, hint: '(Points being applied to your stats)'},
-        {label: 'Efficiency: ', value: Math.round(this.efficiency * 100) /100 + '%', hint: '(Utilized / Equipped)'}
-      ]
+        {label: 'Efficiency: ', value: this.efficiencyComputed + '%', hint: '(Utilized / Equipped)'}
+      ]        
     }
   },
   methods: {

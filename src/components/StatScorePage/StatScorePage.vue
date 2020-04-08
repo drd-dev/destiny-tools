@@ -51,7 +51,6 @@ export default {
   },
   data(){
     return{
-      calculatePressed: false,
         stats: {
           mobility: '',
           resilience: '',
@@ -71,8 +70,7 @@ export default {
   },
   methods: {
     calculateClicked(data){
-      if(this.calculatePressed === true){this.$refs.results.calculateArmorScore()}
-      this.calculatePressed = true;
+      this.$refs.results.calculateArmorScore();
       this.stats = data;
     },
     getCharacterIDs(){
