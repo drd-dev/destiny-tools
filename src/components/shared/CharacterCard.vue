@@ -1,5 +1,5 @@
 <template>
-<a class="character-card col-sm" v-on:click="emitStats" v-bind:class="{loading: !isLoaded, selected: selected}">
+<a v-if="isLoaded" class="character-card col-sm" v-on:click="emitStats" v-bind:class="{loading: !isLoaded, selected: selected}">
     <div class="card-content row">
     <div class="content-top">
         <div class="class-nam">
@@ -20,6 +20,9 @@
 
     </div>
 </a>
+<div v-else="" class="character-card col-sm">
+    <div class="spinner-border"></div>
+</div>
 </template>
 
 <script>
@@ -30,6 +33,7 @@ export default {
   props: {
       memberID: String,
       characterID: {},
+      platform: Number
   },
   data(){
       return{
@@ -59,7 +63,7 @@ export default {
   },
   methods: {
     getCharacterData(){
-      BungieUtils.getCharacter(this.memberID,this.characterID).then((result) => {
+      BungieUtils.getCharacter(this.memberID,this.characterID, this.platform).then((result) => {
           let char = result.data.Response.character.data
           this.characterData = char;
           this.level = char.levelProgression.level;

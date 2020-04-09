@@ -1,27 +1,31 @@
 <template>
-  <div class="page-content">
+  <div class="page-content container-fluid">
     <PageInfo title="Stat Score Calculator" 
+      class="col"
       body="Enter your armor stats to get back a score"/>
     
     <div class="player-search">
-      <label for="">Enter Username</label>
-      <input type="text" class="form-control des-input-dark"  v-model="userNameSearch">
-      <button type="button" class="des-btn-green" v-on:click="getCharacterIDs()">Get User</button>
-      <h3 v-if="user.charactersIDs.length > 0">Select a Character</h3>
+      <form onsubmit="return false">
+        <label>Enter Username</label>
+        <input  type="text" class="form-control des-input-dark"  v-model="userNameSearch">
+        <button type="submit" class="get-user des-btn-green" :disabled="userNameSearch === ''" v-on:click="getCharacterIDs()">Get User</button>
+      </form>
+      <h3 style="font-size: 20px; padding-top: 30px" v-if="user.charactersIDs.length > 0">{{user.displayName}}'s Guardians:</h3>
+      <h2 v-if="noUser" style="text-align: center;">No User Found</h2>
+      <div class="spinner-border" v-if="isloading"></div>
       <div class="character-cards row"> 
-        <h2 v-if="noUser" style="text-align: center;">No User Found</h2>
         <CharacterCard
+          class="col"
           ref ='charCard'
           v-for="characterID in user.charactersIDs" 
           :key="characterID" 
+          :platform="user.platform"
           :memberID="user.membershipID"
           :characterID="characterID"
-          @statsFromUser="updateStats"/>
+          @statsFromUser="updateStats"/>      
       </div>
-    
     </div>
     <div class="score-calculator row">
-
       <StatScoreForm 
         class="form col-sm"
         @calculateClicked="calculateClicked"
@@ -65,7 +69,9 @@ export default {
         displayName:'',
         membershipID: '',
         charactersIDs: [],
-      }
+        platform: 0
+      },
+      isloading: false,
     }
   },
   methods: {
@@ -74,6 +80,7 @@ export default {
       this.stats = data;
     },
     getCharacterIDs(){
+      this.isloading = true;
       this.noUser = false;
       this.user ={
         displayName:'',
@@ -89,15 +96,19 @@ export default {
           strength: ''
       },
       BungieAPI.getMembershipID(this.userNameSearch).then((result) => {
-        //store the membershipID and display name
+        //store the membershipID, display name, and platform type
         this.user.membershipID = result.data.Response[0].membershipId;
         this.user.displayName = result.data.Response[0].displayName;
+        this.user.platform = parseInt(result.data.Response[0].membershipType);
+
 
         //get the user's character's IDs
-        BungieAPI.getProfile(this.user.membershipID, 'TigerSteam').then((result) =>{
+        BungieAPI.getProfile(this.user.membershipID, this.user.platform).then((result) =>{
           this.user.charactersIDs = Object.keys(result.data.Response.characters.data);
+          this.isloading = false;
         })
       }).catch((error) => {
+        this.isloading = false;
         console.log(error);
         this.noUser = true;
       })
@@ -120,7 +131,8 @@ export default {
 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+@import '../../theme/colors.scss';
 
 .player-search{
   margin: 0 auto;
@@ -138,6 +150,4 @@ export default {
       width: 100%;
   }
 }
-
-
 </style>
