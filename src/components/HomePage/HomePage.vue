@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <div class="page-content">
-      <PageInfo title="Welcome To Destiny Tools" body="Below is a range of various tools to assist players in Destiny 2 (Right now there is only one)"/>
+      <PageInfo title="Welcome To Destiny Tools" body="Below is a range of various tools to assist players in Destiny 2 (More to come)"/>
       <ul>
         <li>
           <router-link to="StatScore">Stat Score Calculator</router-link>

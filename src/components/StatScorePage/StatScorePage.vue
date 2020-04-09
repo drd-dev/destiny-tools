@@ -22,6 +22,7 @@
           :platform="user.platform"
           :memberID="user.membershipID"
           :characterID="characterID"
+          :selectedID="selectedID"
           @statsFromUser="updateStats"/>      
       </div>
     </div>
@@ -72,6 +73,7 @@ export default {
         platform: 0
       },
       isloading: false,
+      selectedID: ''
     }
   },
   methods: {
@@ -113,7 +115,7 @@ export default {
         this.noUser = true;
       })
     },
-    updateStats(stats){
+    updateStats(stats, data){
       const values = Object.values(stats);
       this.stats.mobility = values[5];
       this.stats.resilience = values[1];
@@ -121,6 +123,8 @@ export default {
       this.stats.discipline = values[2];
       this.stats.intellect = values[0];
       this.stats.strength = values[6];
+      this.$refs.results.calculateArmorScore();
+      this.selectedID = data;
     }
   }
 

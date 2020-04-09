@@ -75,7 +75,7 @@
               </div>
           </div>
           <div class="row" id="button-row">
-            <button type="button" v-on:click="submitStats()" v-bind:disabled="isCalculateReady" class="des-btn-green">Calculate</button>
+            <button type="button" v-on:click="submitStats()" v-bind:disabled="isCalculateReady" class="des-btn-green">Recalculate</button>
           </div>
 
       </form>

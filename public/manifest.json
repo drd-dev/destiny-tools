@@ -1,0 +1,17 @@
+
+
+{
+    "name": "destiny-tools",
+    "short_name": "D2 Tools",
+    "start_url": "index.html",
+    "display": "fullscreen",
+    "theme_color": "#12171C",
+    "background_color": "#12171C",
+    "icons": [
+      {
+        "src": "/app-icon.png",
+        "sizes": "501x501", 
+        "type": "image/png"
+      }
+    ]
+  }
