@@ -3,15 +3,15 @@
       <div class="stat-name">{{statName}} Tier: {{Math.floor(progress/10)}}</div>
       <div class="progress">
         <div class="progress-bar" v-bind:style="{width: getWidth + '%' }">
-            <div class="progress-bar-segment" style="left: 14%;"></div>
-            <div class="progress-bar-segment" style="left: 23%;"></div>
-            <div class="progress-bar-segment" style="left: 32%;"></div>
+            <div class="progress-bar-segment" style="left: 13%;"></div>
+            <div class="progress-bar-segment" style="left: 22%;"></div>
+            <div class="progress-bar-segment" style="left: 31%;"></div>
             <div class="progress-bar-segment" style="left: 41%;"></div>
             <div class="progress-bar-segment" style="left: 50%;"></div>
             <div class="progress-bar-segment" style="left: 59%;"></div>
             <div class="progress-bar-segment" style="left: 68%;"></div>
             <div class="progress-bar-segment" style="left: 77%;"></div>
-            <div class="progress-bar-segment" style="left: 86%;"></div>
+            <div class="progress-bar-segment" style="left: 87%;"></div>
             <div class="progress-bar-text">
                 {{Math.floor(progress/10)}} 
             </div>    
@@ -67,7 +67,6 @@ export default {
 
         .progress-bar-segment{
             position: absolute;
-            bottom: 0;
             border-left: 2px solid $des-color-background-dark;
             height: 22px;
         }
