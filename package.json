@@ -1,6 +1,6 @@
 {
   "name": "destiny-tools",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -16,7 +16,8 @@
     "sass-loader": "^8.0.2",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6",
-    "vuex": "^3.1.3"
+    "vuex": "^3.1.3",
+    "workbox-webpack-plugin": "^5.1.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.3.0",

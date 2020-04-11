@@ -9,14 +9,15 @@
 </template>
 
 <script>
-import Config from '../../config.json';
+// import Config from '../../config.json';
+import pack from '../../../package.json'
 export default {
   name: 'Footer',
   props: {
   },
   computed: {
     version(){
-      return Config.version;
+      return pack.version;
     },
       date(){
         let d = new Date();
