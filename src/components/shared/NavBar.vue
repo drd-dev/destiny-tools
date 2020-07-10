@@ -9,12 +9,11 @@
 </template>
 
 <script>
-import Config from '../../config.json';
 export default {
   name: 'NavBar',
   data(){
       return{
-         appName: Config.appName
+         appName: "Destiny Tools"
       }
   }
 }

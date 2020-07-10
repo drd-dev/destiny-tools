@@ -17,22 +17,28 @@ export async function getData(path){
     return await response;
 }
 
+export async function searchUsers(search){
+  const path = data.baseURI + '/User/SearchUsers/?q=' + search
+  const response = await getData(path);
+  return response;
+}
+
 //gets a users membership ID from the Bungie API
-export async function getMembershipID(user){
+export async function searchDestinyPlayers(user){
   const path = data.baseURI + '/Destiny2/SearchDestinyPlayer/-1/' + user;
-  const response = getData(path);
+  const response = await getData(path);
   return response;
 }
 
 export async function getProfile(membershipID, profileType){
   const path = data.baseURI + '/Destiny2/' + profileType +'/Profile/' +  membershipID + '/?components=200';
-  const response = getData(path);
+  const response = await getData(path);
   return response;
 
 }
 
 export async function getCharacter(memberID, characterID, profileType){
   const path = data.baseURI + '/Destiny2/'+ profileType +'/Profile/'+ memberID +'/Character/' +characterID +'/?components=200'
-  const response = getData(path);
+  const response =  await getData(path);
   return response;
 }

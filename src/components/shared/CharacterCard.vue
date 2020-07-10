@@ -59,7 +59,6 @@ export default {
       }
     },
     checkSelected() {
-        console.log("wee")
         return this.selectedID === this.characterID ? true : false;
     }
   },
